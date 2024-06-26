@@ -28,6 +28,7 @@ import com.intellij.ide.util.projectWizard.WizardContext;
 import com.intellij.openapi.actionSystem.ActionPlaces;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.actionSystem.ex.ActionUtil;
 import com.intellij.openapi.project.Project;
 import com.intellij.ui.EditorNotificationPanel;
@@ -49,7 +50,7 @@ public class BazelImportCurrentProjectAction extends AnAction {
     return BazelWorkspaceRootProvider.INSTANCE.isWorkspaceRoot(new File(root));
   }
 
-  public static Runnable createAction(EditorNotificationPanel panel, String basePath) {
+  public static Runnable createAction(String basePath) {
     File baseFile = new File(basePath);
     BazelImportCurrentProjectAction action = new BazelImportCurrentProjectAction(baseFile);
 
@@ -58,7 +59,7 @@ public class BazelImportCurrentProjectAction extends AnAction {
           action,
           null,
           ActionPlaces.UNKNOWN,
-          DataManager.getInstance().getDataContext(panel)
+          DataContext.EMPTY_CONTEXT
       );
 
       if (ActionUtil.lastUpdateAndCheckDumb(action, event, true)) {

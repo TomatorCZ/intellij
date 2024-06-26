@@ -15,4 +15,8 @@
   -->
 <idea-plugin>
   <vendor>Google</vendor>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <editorNotificationProvider implementation="com.google.idea.blaze.base.wizard2.BazelNotificationProvider"/>
+  </extensions>
 </idea-plugin>

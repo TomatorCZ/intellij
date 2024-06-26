@@ -51,7 +51,7 @@ public class BazelNotificationProvider implements EditorNotificationProvider, Du
 
     return fileEditor -> {
       EditorNotificationPanel panel = new EditorNotificationPanel(fileEditor, Status.Warning);
-      Runnable importAction = BazelImportCurrentProjectAction.createAction(panel, root);
+      Runnable importAction = BazelImportCurrentProjectAction.createAction(root);
 
       panel.setText("Project is not configured");
       panel.createActionLabel("Import Bazel project", importAction);
